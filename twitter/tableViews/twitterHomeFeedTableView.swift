@@ -272,15 +272,26 @@ class twitterHomeFeedTableView: UITableViewController {
         cell.isUserInteractionEnabled = true
         return cell
         
+        
+        
     }
-    
+    //https://github.com/imjusttrynabelikeElon/Twitter-clone-with-own-touches
     //
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Function: tableView(_:didSelectRowAt:)")
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "detail") as? TwitterHomeViewDetailViewController else {
-            print("failed to instantiate detail view controller")
-            return
-        }
+        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+          
+              guard let vc = storyBoard.instantiateViewController(withIdentifier: "detail") as? TwitterHomeViewDetailViewController else {
+              print("failed to instantiate detail view controller")
+              return
+              }
+        
+        /*
+         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "detail") as? TwitterHomeViewDetailViewController else {
+             print("failed to instantiate detail view controller")
+             return
+         }
+         */
         vc.selectedTweet = tweets[indexPath.row].message
         print("selectedTweet set")
    
