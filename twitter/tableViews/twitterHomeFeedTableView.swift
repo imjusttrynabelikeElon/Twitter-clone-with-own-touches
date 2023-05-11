@@ -95,6 +95,7 @@ class MyTableViewCell: UITableViewCell {
         
     
         
+        
         NSLayoutConstraint.activate([
             
             
@@ -191,25 +192,15 @@ class MyTableViewCell: UITableViewCell {
         shareLabel.setImage(UIImage(systemName: "tray.and.arrow.down.fill"), for: .normal)
         
         
+        
+        
+        
     }
     // the amount right amount of things that has to be able
     
+    
 }
 
-class TwitterTabBarContainerr: UIViewController {
-
-    private let tabBar = TwitterTabBar()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        let navController = UINavigationController(rootViewController: tabBar)
-        addChild(navController)
-        view.addSubview(navController.view)
-        navController.view.frame = view.bounds
-        navController.didMove(toParent: self)
-    }
-}
 
 
 class twitterHomeFeedTableView: UITableViewController {
@@ -220,6 +211,7 @@ class twitterHomeFeedTableView: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
        // performSegue(withIdentifier: "tweetCell", sender: self)
         
@@ -253,7 +245,7 @@ class twitterHomeFeedTableView: UITableViewController {
         Tweet(name: "Karon Bell", message: "Just had the best pizza ever 🍕🤤", profileImageName: "kb", title: "", userName: "@karonbell", comments: "KUOH", numberOfComments: 44, retweet: "KIHUOL", numberOfRetweets: 63, likes: "IKUHU", numberOfLikes: 73, views: "KUHO", numberOfViews: 54, share: "IHLPHI"),
         Tweet(name: "NBA", message: "Can't wait to go on vacation next week 🌴🌊", profileImageName: "nba", title: "", userName: "@nba", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI"),
         Tweet(name: "Google", message: "Finished my first marathon today! 🏃‍♀️💪", profileImageName: "google", title: "", userName: "@google", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI"),
-        Tweet(name: "Mark Zuck", message: "facebook is my day job 😆", profileImageName: "markkk", title: "", userName: "@marky", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI"),
+        Tweet(name: "Mark Zuck", message: "facebook is my day job 😆 FaceBook has been a great app and website for years and years on. We we keep doing great things!", profileImageName: "markkk", title: "", userName: "@marky", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI"),
         Tweet(name: "Elon Musk", message: "I love this app can you tell?🤣", profileImageName: "elom", title: "", userName: "@elonMusk", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI"),
         Tweet(name: "justin Bieber", message: "will you be my Baby?♥️", profileImageName: "jb", title: "", userName: "@justinBieber", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI")
         
@@ -275,6 +267,8 @@ class twitterHomeFeedTableView: UITableViewController {
         
         
     }
+    
+    
     //https://github.com/imjusttrynabelikeElon/Twitter-clone-with-own-touches
     //
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -283,25 +277,45 @@ class twitterHomeFeedTableView: UITableViewController {
           
               guard let vc = storyBoard.instantiateViewController(withIdentifier: "detail") as? TwitterHomeViewDetailViewController else {
               print("failed to instantiate detail view controller")
+                  
               return
               }
         
+        
+        
         /*
          guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "detail") as? TwitterHomeViewDetailViewController else {
-             print("failed to instantiate detail view controller")
+              print("failed to instantiate detail view controller")
              return
          }
-         */
+          */
+        
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .flipHorizontal
+        vc.nameLabell = tweets[indexPath.row].name
+        print(vc.nameLabell)
+        
+        vc.userNamee = tweets[indexPath.row].userName
+        
+        let imageName = tweets[indexPath.row].profileImageName
+        let image = UIImage(named: imageName)
+        vc.selectedProfileImage = image
+      
+      
         vc.selectedTweet = tweets[indexPath.row].message
         print("selectedTweet set")
-   
-             // ...
-             if let navVC = tabBarController?.navigationController {
-                 navVC.pushViewController(vc, animated: true)
-             } else {
-                 let navVC = UINavigationController(rootViewController: vc)
-                 tabBarController?.present(navVC, animated: true, completion: nil)
-             }
+        print(vc.selectedTweet)
+
+        if let navVC = navigationController {
+            navVC.pushViewController(vc, animated: true)
+        } else {
+            let navVC = UINavigationController(rootViewController: vc)
+            navVC.modalPresentationStyle = .fullScreen
+            navVC.modalTransitionStyle = .partialCurl
+            present(navVC, animated: true, completion: nil)
+        }
+
+
          
     }
 
@@ -313,6 +327,8 @@ class twitterHomeFeedTableView: UITableViewController {
     }
     
     
+   
+
    
 }
 
