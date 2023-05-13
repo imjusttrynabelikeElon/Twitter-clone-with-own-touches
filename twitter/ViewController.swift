@@ -8,7 +8,6 @@
 import UIKit
 
 
-
 class TwitterHomePage: UIViewController {
 
     var currentLineView: UIView?

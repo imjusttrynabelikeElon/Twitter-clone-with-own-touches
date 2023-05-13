@@ -29,12 +29,75 @@ class TwitterHomeViewDetailViewController: UIViewController {
     
     var userNamee: String?
     
-    //
+    var dateLabel: UILabel!
+    
+    var datee: String?
+    
+    var timeLabel: UILabel!
+    
+    var timee: String?
+    
+    var retweetLabel: UILabel!
+    
+    
+    var retweett: String?
+    
+    var likee: String?
+    
+    var numberOfLikes: Int?
+    
+   var numberOfLikesLabel: UILabel!
+    
+    
+    var likeLabel: UILabel!
+    
+    
+    var comment: String?
+    
+    
+    var commentLabel: UILabel!
+    
+    
+    var share: String?
+    
+    
+    var shareLabel: UILabel!
+    
+    
+    var numberOfRetweets: Int?
+    
+    
+    var numberOfRetweetsLabel: UILabel!
+    
+    var likeImage: String?
+    
+    
+    var likeImageLabel: UILabel!
+    
+    
+    var reTweetImage: String?
+    
+    
+    var reTweetImageLabel: UILabel!
+    
+    
+    var shareImageLabel: UILabel!
+    
+    
+    var commentsImageLabel: UILabel!
+    
+  
+    var commentsImage: String?
+    
+    var shareImage: String?
+    
+    var numberOfReTweetsName: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("K")
+        
         
         
         // Set the title of the navigation bar
@@ -73,13 +136,370 @@ class TwitterHomeViewDetailViewController: UIViewController {
                 label.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -293),
                
             ])
+            
+            
+            timeLabel = UILabel()
+         
+         
+         
+         if let timeLabell = timeLabel as UILabel? {
+            timeLabell.numberOfLines = 0
+            timeLabell.lineBreakMode = .byWordWrapping
+            timeLabell.textAlignment = .center
+            timeLabell.translatesAutoresizingMaskIntoConstraints = false
+             
+             
+             view.addSubview(timeLabell)
+             
+             if let timeToPost = timee {
+                 timeLabell.text = timeToPost
+ 
+                 timeLabell.sizeToFit()
+             }
+             
+             timeLabell.translatesAutoresizingMaskIntoConstraints = false
+             NSLayoutConstraint.activate([
+                 timeLabell.heightAnchor.constraint(equalToConstant: 400),
+                 timeLabell.widthAnchor.constraint(equalToConstant: 180),
+                 timeLabell.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -115),
+                 timeLabell.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -133)
+             
+             ])
+             
+         }
+         
+            dateLabel = UILabel()
+
+            
+            if let dateToLoad = dateLabel as UILabel? {
+                dateToLoad.numberOfLines = 0
+                dateToLoad.lineBreakMode = .byWordWrapping
+                dateToLoad.textAlignment = .center
+                dateToLoad.translatesAutoresizingMaskIntoConstraints = false
+                
+                view.addSubview(dateToLoad)
+                
+                if let DateLabell = datee {
+                    dateToLoad.text = DateLabell
+                    dateToLoad.sizeToFit()
+                }
+                
+                NSLayoutConstraint.activate([
+                
+                    dateToLoad.heightAnchor.constraint(equalToConstant: 100),
+                    dateToLoad.widthAnchor.constraint(equalToConstant: 150),
+                    dateToLoad.bottomAnchor.constraint(equalTo: label.bottomAnchor, constant: 10),
+                    dateToLoad.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -153)
+                ])
+            }
+            
+            if let timeLabell = retweetLabel as UILabel? {
+               timeLabell.numberOfLines = 0
+               timeLabell.lineBreakMode = .byWordWrapping
+               timeLabell.textAlignment = .center
+               timeLabell.translatesAutoresizingMaskIntoConstraints = false
+                
+                
+                view.addSubview(timeLabell)
+                
+                if let timeToPost = timee {
+                    timeLabell.text = timeToPost
+    
+                    timeLabell.sizeToFit()
+                }
+                
+                timeLabell.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate([
+                    timeLabell.heightAnchor.constraint(equalToConstant: 400),
+                    timeLabell.widthAnchor.constraint(equalToConstant: 180),
+                    timeLabell.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -115),
+                    timeLabell.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -133)
+                
+                ])
+            }
+            
+            
+            if let retweetToLoad = retweetLabel as UILabel? {
+                retweetToLoad.numberOfLines = 0
+                retweetToLoad.lineBreakMode = .byWordWrapping
+                retweetToLoad.textAlignment = .center
+                retweetToLoad.translatesAutoresizingMaskIntoConstraints = false
+                
+                
+                view.addSubview(retweetToLoad)
+                
+                if let retweetLabel = retweett {
+                    retweetToLoad.text = retweetLabel
+                    
+                    retweetToLoad.sizeToFit()
+                }
+            }
+            
+            
+            if let likeToLoad = likeLabel as UILabel? {
+                likeToLoad.numberOfLines = 0
+                likeToLoad.lineBreakMode = .byWordWrapping
+                likeToLoad.textAlignment = .center
+                likeToLoad.translatesAutoresizingMaskIntoConstraints = false
+                
+                
+                view.addSubview(likeToLoad)
+                
+                if let likeLabel = likee {
+                    likeToLoad.text = likeLabel
+                    
+                    likeToLoad.sizeToFit()
+                }
+            }
+            
+            if let commentImageToLoad = commentsImageLabel as UILabel? {
+                commentImageToLoad.numberOfLines = 0
+                commentImageToLoad.lineBreakMode = .byWordWrapping
+                commentImageToLoad.textAlignment = .center
+                commentImageToLoad.translatesAutoresizingMaskIntoConstraints = false
+                
+                
+                view.addSubview(commentImageToLoad)
+                
+                if let commentImageToLoad = commentsImageLabel {
+                    commentImageToLoad.text = commentsImage
+                    
+                   commentImageToLoad.sizeToFit()
+                }
+            }
+            
+            if let reTweetImageToLoad = reTweetImageLabel as UILabel? {
+               reTweetImageToLoad.numberOfLines = 0
+               reTweetImageToLoad.lineBreakMode = .byWordWrapping
+               reTweetImageToLoad.textAlignment = .center
+               reTweetImageToLoad.translatesAutoresizingMaskIntoConstraints = false
+           
+                
+                view.addSubview(reTweetImageToLoad)
+                
+                if let reTweetImageToLoad = reTweetImageLabel {
+                    reTweetImageToLoad.text = reTweetImage
+                    
+                   reTweetImageToLoad.sizeToFit()
+                }
+            }
+            
+            
+            if let likeImageToLoad = likeImageLabel as UILabel? {
+               likeImageToLoad.numberOfLines = 0
+               likeImageToLoad.lineBreakMode = .byWordWrapping
+               likeImageToLoad.textAlignment = .center
+               likeImageToLoad.translatesAutoresizingMaskIntoConstraints = false
+           
+                
+                view.addSubview(likeImageToLoad)
+                
+                if let likeImageToLoad = likeImageLabel {
+                    likeImageToLoad.text = likeImage
+                    
+                   likeImageToLoad.sizeToFit()
+                }
+            }
+            
+            if let shareImageToLoad = shareImageLabel as UILabel? {
+               shareImageToLoad.numberOfLines = 0
+               shareImageToLoad.lineBreakMode = .byWordWrapping
+               shareImageToLoad.textAlignment = .center
+               shareImageToLoad.translatesAutoresizingMaskIntoConstraints = false
+           
+                
+                view.addSubview(shareImageToLoad)
+                
+                if let shareImageToLoad = shareImageLabel {
+                   shareImageToLoad.text = shareImage
+                    
+                   shareImageLabel.sizeToFit()
+                }
+            }
+            
+            dateLabel = UILabel()
+
+            
+            if let dateToLoad = dateLabel as UILabel? {
+                dateToLoad.numberOfLines = 0
+                dateToLoad.lineBreakMode = .byWordWrapping
+                dateToLoad.textAlignment = .center
+                dateToLoad.translatesAutoresizingMaskIntoConstraints = false
+                
+                view.addSubview(dateToLoad)
+                
+                if let DateLabell = datee {
+                    dateToLoad.text = DateLabell
+                    dateToLoad.sizeToFit()
+                }
+                
+                NSLayoutConstraint.activate([
+                
+                    dateToLoad.heightAnchor.constraint(equalToConstant: 100),
+                    dateToLoad.widthAnchor.constraint(equalToConstant: 150),
+                    dateToLoad.bottomAnchor.constraint(equalTo: label.bottomAnchor, constant: 10),
+                    dateToLoad.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -153)
+                ])
+            }
+            
+            
+            timeLabel = UILabel()
+         
+         
+         
+         if let timeLabell = timeLabel as UILabel? {
+            timeLabell.numberOfLines = 0
+            timeLabell.lineBreakMode = .byWordWrapping
+            timeLabell.textAlignment = .center
+            timeLabell.translatesAutoresizingMaskIntoConstraints = false
+             
+             
+             view.addSubview(timeLabell)
+             
+             if let timeToPost = timee {
+                 timeLabell.text = timeToPost
+ 
+                 timeLabell.sizeToFit()
+             }
+             
+             timeLabell.translatesAutoresizingMaskIntoConstraints = false
+             NSLayoutConstraint.activate([
+                 timeLabell.heightAnchor.constraint(equalToConstant: 400),
+                 timeLabell.widthAnchor.constraint(equalToConstant: 180),
+                 timeLabell.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -115),
+                 timeLabell.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -133)
+             
+             ])
+             
+         }
+            
+        
+            numberOfRetweetsLabel = UILabel()
+            
+            if let numberOfReTweetsToLoad = numberOfRetweetsLabel as UILabel? {
+               numberOfReTweetsToLoad.numberOfLines = 0
+               numberOfReTweetsToLoad.lineBreakMode = .byWordWrapping
+               numberOfReTweetsToLoad.textAlignment = .center
+               numberOfReTweetsToLoad.translatesAutoresizingMaskIntoConstraints = false
+           
+                
+                view.addSubview(numberOfReTweetsToLoad)
+             
+                if let numberOfRetweetsLabel = numberOfRetweetsLabel {
+                    numberOfRetweetsLabel.text = "\(numberOfRetweets!)"
+                    numberOfRetweetsLabel.sizeToFit()
+                }
+
+            }
+            
+            NSLayoutConstraint.activate([
+                numberOfRetweetsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -253),
+                numberOfRetweetsLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -258),
+              
+            
+            ])
+            
+            numberOfReTweetsName = UILabel()
+            
+            if let reTweetNameToLoad = numberOfReTweetsName as UILabel? {
+               reTweetNameToLoad.numberOfLines = 0
+               reTweetNameToLoad.lineBreakMode = .byWordWrapping
+               reTweetNameToLoad.textAlignment = .center
+               reTweetNameToLoad.translatesAutoresizingMaskIntoConstraints = false
+           
+                
+                view.addSubview(reTweetNameToLoad)
+             
+                if let TweetToLoadName = retweett {
+                    reTweetNameToLoad.text = TweetToLoadName
+                    reTweetNameToLoad.sizeToFit()
+                }
+
+            }
+            
+            NSLayoutConstraint.activate([
+                numberOfReTweetsName.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -283),
+                numberOfReTweetsName.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -258),
+              
+            
+            ])
+            
+           
+            
+            numberOfLikesLabel = UILabel()
+            
+            if let numberOfLikesToLoad = numberOfLikesLabel as UILabel? {
+                numberOfLikesToLoad.numberOfLines = 0
+                numberOfLikesToLoad.lineBreakMode = .byWordWrapping
+                numberOfLikesToLoad.textAlignment = .center
+                numberOfLikesToLoad.translatesAutoresizingMaskIntoConstraints = false
+                
+                view.addSubview(numberOfLikesToLoad)
+                
+                if let numberOfLikesLabell = numberOfLikesLabel {
+                    numberOfLikesLabell.text = "\(numberOfLikes!)"
+                    numberOfLikesLabell.sizeToFit()
+                }
+            
+            }
+            NSLayoutConstraint.activate([
+               numberOfLikesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -83),
+                numberOfLikesLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -258),
+              
+            
+            ])
+            
+          likeLabel = UILabel()
+            
+            if let likeNamee = likeLabel as UILabel? {
+                likeNamee.numberOfLines = 0
+                likeNamee.lineBreakMode = .byWordWrapping
+                likeNamee.textAlignment = .center
+                likeNamee.translatesAutoresizingMaskIntoConstraints = false
+           
+                
+                view.addSubview(likeNamee)
+             
+                if let likeNameToLoad = likee {
+                  likeNamee.text = likeNameToLoad
+                  likeNamee.sizeToFit()
+                }
+
+            }
+            
+            NSLayoutConstraint.activate([
+                likeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -110),
+               likeLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -258),
+              
+            
+            ])
+            
+            
+            
+            
+            
+           
         }
         
-        nameUILabel = UILabel()
-
+      
         
-       userNameLabell = UILabel()
+      //  numberOfRetweetsLabel = UILabel()
+        
+         shareLabel = UILabel()
+        
+         commentsImageLabel = UILabel()
+        
+         retweetLabel = UILabel()
+        
+         likeLabel = UILabel()
+        
+         nameUILabel = UILabel()
+
+         userNameLabell = UILabel()
             
+        
+        
+        
             
             if let selectedProfileImage = selectedProfileImage {
                 let imageView = UIImageView(image: selectedProfileImage)
@@ -113,7 +533,8 @@ class TwitterHomeViewDetailViewController: UIViewController {
                         
                     ])
                     
-                    //
+                   
+                  
                     if let userNameToLoad = userNameLabell as UILabel?  {
                         userNameToLoad.numberOfLines = 0
                         userNameToLoad.lineBreakMode = .byWordWrapping

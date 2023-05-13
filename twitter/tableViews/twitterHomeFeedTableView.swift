@@ -8,6 +8,22 @@
  import Foundation
  import UIKit
 
+
+//class LinkTweet {
+    
+    // linkTweet is a class for when a user wants to add a link into their tweet.. they have to add a title to the tweet to explan it, and their is also an optional text for them to also include even more.
+    
+  //  var link: URL
+  //  var title: String
+  //  var text: String?
+    
+  //  init(link: URL, title: String, text: String?) {
+     //   self.link = link
+     //   self.title = title
+    //    self.text = text
+  //  }
+//}
+
 struct Tweet {
     
     let name: String
@@ -24,7 +40,11 @@ struct Tweet {
     let views: String
     let numberOfViews: Int
     let share: String
-    
+    let date: String
+    let timePosted: String
+    let reTweetName: String
+    let likesName: String
+  //  let addLink: LinkTweet
  
    }
 
@@ -39,12 +59,9 @@ class MyTableViewCell: UITableViewCell {
     let titleLabel = UILabel()
     let userNameLabel = UILabel()
     let commentsLabel = UIButton()
-    
-   
-
-    
-        
-
+    let dateLabel = UILabel()
+    let photoTweet = UIImageView()
+    let videoTweet = UIView()
     let numberOfCommentsLabel = UILabel()
     let retweetsLabel = UIButton()
     let numberOfRetweetsLabel = UILabel()
@@ -53,8 +70,8 @@ class MyTableViewCell: UITableViewCell {
     let viewsLabel = UIButton()
     let numberOfViewsLabel = UILabel()
     let shareLabel = UIButton()
-    
-    
+    let timePostedLabel = UILabel()
+    let numberOfReTweetsabel = UILabel()
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -74,6 +91,11 @@ class MyTableViewCell: UITableViewCell {
         viewsLabel.translatesAutoresizingMaskIntoConstraints = false
         numberOfViewsLabel.translatesAutoresizingMaskIntoConstraints = false
         shareLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        timePostedLabel.translatesAutoresizingMaskIntoConstraints  = false
+        videoTweet.translatesAutoresizingMaskIntoConstraints = false
+        photoTweet.translatesAutoresizingMaskIntoConstraints = false
+        numberOfRetweetsLabel.translatesAutoresizingMaskIntoConstraints = false
         
         commentsLabel.addTarget(self, action: #selector(didTapCommentsLabel), for: .touchUpInside)
      
@@ -92,10 +114,12 @@ class MyTableViewCell: UITableViewCell {
         contentView.addSubview(viewsLabel)
         contentView.addSubview(numberOfViewsLabel)
         contentView.addSubview(shareLabel)
-        
-    
-        
-        
+        contentView.addSubview(dateLabel)
+        contentView.addSubview(timePostedLabel)
+        contentView.addSubview(photoTweet)
+        contentView.addSubview(videoTweet)
+        contentView.addSubview(numberOfRetweetsLabel)
+                
         NSLayoutConstraint.activate([
             
             
@@ -148,7 +172,19 @@ class MyTableViewCell: UITableViewCell {
             
             
             shareLabel.leadingAnchor.constraint(equalTo: numberOfCommentsLabel.trailingAnchor, constant: 276),
-            shareLabel.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: -16)
+            shareLabel.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: -16),
+            
+            dateLabel.widthAnchor.constraint(equalToConstant: 0),
+            dateLabel.heightAnchor.constraint(equalToConstant: 0),
+            
+            timePostedLabel.widthAnchor.constraint(equalToConstant: 0),
+            timePostedLabel.heightAnchor.constraint(equalToConstant: 0),
+            
+            photoTweet.widthAnchor.constraint(equalToConstant: 0),
+            photoTweet.heightAnchor.constraint(equalToConstant: 0),
+            
+            videoTweet.widthAnchor.constraint(equalToConstant: 0),
+            videoTweet.heightAnchor.constraint(equalToConstant: 0)
          
         ])
         
@@ -190,9 +226,9 @@ class MyTableViewCell: UITableViewCell {
         viewsLabel.setImage(UIImage(systemName: "eye.fill"), for: .normal)
         numberOfViewsLabel.text = "\(tweet.numberOfViews)"
         shareLabel.setImage(UIImage(systemName: "tray.and.arrow.down.fill"), for: .normal)
-        
-        
-        
+        dateLabel.text = tweet.date
+        numberOfRetweetsLabel.text = "\(tweet.numberOfRetweets)"
+     
         
         
     }
@@ -242,12 +278,12 @@ class twitterHomeFeedTableView: UITableViewController {
     
     let tweets: [Tweet] = [
         
-        Tweet(name: "Karon Bell", message: "Just had the best pizza ever 🍕🤤", profileImageName: "kb", title: "", userName: "@karonbell", comments: "KUOH", numberOfComments: 44, retweet: "KIHUOL", numberOfRetweets: 63, likes: "IKUHU", numberOfLikes: 73, views: "KUHO", numberOfViews: 54, share: "IHLPHI"),
-        Tweet(name: "NBA", message: "Can't wait to go on vacation next week 🌴🌊", profileImageName: "nba", title: "", userName: "@nba", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI"),
-        Tweet(name: "Google", message: "Finished my first marathon today! 🏃‍♀️💪", profileImageName: "google", title: "", userName: "@google", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI"),
-        Tweet(name: "Mark Zuck", message: "facebook is my day job 😆 FaceBook has been a great app and website for years and years on. We we keep doing great things!", profileImageName: "markkk", title: "", userName: "@marky", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI"),
-        Tweet(name: "Elon Musk", message: "I love this app can you tell?🤣", profileImageName: "elom", title: "", userName: "@elonMusk", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI"),
-        Tweet(name: "justin Bieber", message: "will you be my Baby?♥️", profileImageName: "jb", title: "", userName: "@justinBieber", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI")
+        Tweet(name: "Karon Bell", message: "Just learned how to program twitter. I really are not hard once you have the basics of coding down you start to underStand how these programs are made.", profileImageName: "kb", title: "", userName: "@karonbell", comments: "KUOH", numberOfComments: 44, retweet: "KIHUOL", numberOfRetweets: 63, likes: "IKUHU", numberOfLikes: 73, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "05/12/23", timePosted: "1:44pm", reTweetName: "Retweets", likesName: "Likes"),
+        Tweet(name: "NBA", message: "Can't wait to go on vacation next week 🌴🌊 I go on the 25th! NBA bubble - Lebron James.", profileImageName: "nba", title: "", userName: "@nba", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "09/10/2019", timePosted: "6:22am", reTweetName: "Retweets", likesName: "Likes"),
+        Tweet(name: "Google", message: "We our going to make a new website! it will be just like our best since Google!", profileImageName: "google", title: "", userName: "@google", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "09/11/17", timePosted: "12:03pm", reTweetName: "Retweets", likesName: "Likes"),
+        Tweet(name: "Mark Zuck", message: "facebook is my day job 😆 FaceBook has been a great app and website for years and years on. We we keep doing great things!", profileImageName: "markkk", title: "", userName: "@marky", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "01/1/12", timePosted: "1:13am", reTweetName: "Retweets", likesName: "Likes"),
+        Tweet(name: "Elon Musk", message: "I love this app can you tell?🤣", profileImageName: "elom", title: "", userName: "@elonMusk", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "12/24/17", timePosted: "7:21pm", reTweetName: "Retweets", likesName: "Likes"),
+        Tweet(name: "justin Bieber", message: "will you be my Baby?♥️ come see me on", profileImageName: "jb", title: "", userName: "@justinBieber", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "11/13/22", timePosted: "11:13pm", reTweetName: "Retweets", likesName: "Likes")
         
     ]
     
@@ -293,9 +329,23 @@ class twitterHomeFeedTableView: UITableViewController {
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .flipHorizontal
         vc.nameLabell = tweets[indexPath.row].name
-        print(vc.nameLabell)
+        print(vc.nameLabell!)
         
         vc.userNamee = tweets[indexPath.row].userName
+        
+        vc.datee = tweets[indexPath.row].date
+        
+        vc.timee = tweets[indexPath.row].timePosted
+        
+        vc.numberOfRetweets = tweets[indexPath.row].numberOfRetweets
+        
+        vc.retweett = tweets[indexPath.row].reTweetName
+        
+        vc.likee = tweets[indexPath.row].likesName
+        
+        vc.numberOfLikes = tweets[indexPath.row].numberOfLikes
+        
+        vc.likeImage = tweets[indexPath.row].likes
         
         let imageName = tweets[indexPath.row].profileImageName
         let image = UIImage(named: imageName)
@@ -304,16 +354,26 @@ class twitterHomeFeedTableView: UITableViewController {
       
         vc.selectedTweet = tweets[indexPath.row].message
         print("selectedTweet set")
-        print(vc.selectedTweet)
-
+        print(vc.selectedTweet!)
+        
         if let navVC = navigationController {
+            // Create a custom back button image
+            let backButtonImage = UIImage(systemName: "house")
+
+            // Set the custom back button image for the previous view controller's navigation item
+            let backButtonItem = UIBarButtonItem(image: backButtonImage, style: .plain, target: nil, action: nil)
+            navVC.navigationBar.backItem?.backBarButtonItem = backButtonItem
+
             navVC.pushViewController(vc, animated: true)
         } else {
             let navVC = UINavigationController(rootViewController: vc)
             navVC.modalPresentationStyle = .fullScreen
+            vc.tabBarItem.image = UIImage(systemName: "house")
             navVC.modalTransitionStyle = .partialCurl
+
             present(navVC, animated: true, completion: nil)
         }
+
 
 
          
