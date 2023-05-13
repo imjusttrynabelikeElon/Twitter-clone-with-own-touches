@@ -326,6 +326,7 @@ class twitterHomeFeedTableView: UITableViewController {
          }
           */
         
+        
         vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .flipHorizontal
         vc.nameLabell = tweets[indexPath.row].name

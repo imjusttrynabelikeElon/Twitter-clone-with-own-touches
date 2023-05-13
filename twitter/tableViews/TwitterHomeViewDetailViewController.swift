@@ -99,6 +99,7 @@ class TwitterHomeViewDetailViewController: UIViewController {
         print("K")
         
         
+        view.backgroundColor = .cyan
         
         // Set the title of the navigation bar
              self.title = "Tweet"
@@ -596,7 +597,7 @@ class TwitterHomeViewDetailViewController: UIViewController {
         
         let fullScreenVC = UIViewController()
         fullScreenVC.view.addSubview(fullScreenImageView)
-        fullScreenVC.modalPresentationStyle = .fullScreen
+        fullScreenVC.modalPresentationStyle = .popover
         
         present(fullScreenVC, animated: true) {
             // Add a tap gesture recognizer to dismiss the full screen view controller
