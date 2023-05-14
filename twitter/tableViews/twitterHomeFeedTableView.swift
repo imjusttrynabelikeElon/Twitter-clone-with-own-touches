@@ -44,6 +44,11 @@ struct Tweet {
     let timePosted: String
     let reTweetName: String
     let likesName: String
+    let commentsLabel: String
+    let reTweetImagee: String
+    let likeImagee: String
+    let shareImagee: String
+    
   //  let addLink: LinkTweet
  
    }
@@ -72,6 +77,9 @@ class MyTableViewCell: UITableViewCell {
     let shareLabel = UIButton()
     let timePostedLabel = UILabel()
     let numberOfReTweetsabel = UILabel()
+    let reTweetImagee = UIButton()
+    let likeImagee = UIButton()
+    let shareImagee = UIButton()
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -215,8 +223,13 @@ class MyTableViewCell: UITableViewCell {
         profileImageView.image = UIImage(named: tweet.profileImageName)
         titleLabel.text = tweet.title
         userNameLabel.text = tweet.userName
-       
-        commentsLabel.setImage(UIImage(systemName: "message"), for: .normal)
+        
+        likeImagee.setImage(UIImage(systemName: "\(tweet.likeImagee)"), for: .normal)
+        
+        reTweetImagee.setImage(UIImage(systemName: "\(tweet.reTweetImagee)"), for: .normal)
+      
+        commentsLabel.setImage(UIImage(systemName: "\(tweet.commentsLabel)"), for: .normal)
+        
         commentsLabel.translatesAutoresizingMaskIntoConstraints = false
         numberOfCommentsLabel.text = "\(tweet.numberOfComments)"
         retweetsLabel.setImage(UIImage(systemName: "repeat"), for: .normal)
@@ -278,12 +291,12 @@ class twitterHomeFeedTableView: UITableViewController {
     
     let tweets: [Tweet] = [
         
-        Tweet(name: "Karon Bell", message: "Just learned how to program twitter. I really are not hard once you have the basics of coding down you start to underStand how these programs are made.", profileImageName: "kb", title: "", userName: "@karonbell", comments: "KUOH", numberOfComments: 44, retweet: "KIHUOL", numberOfRetweets: 63, likes: "IKUHU", numberOfLikes: 73, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "05/12/23", timePosted: "1:44pm", reTweetName: "Retweets", likesName: "Likes"),
-        Tweet(name: "NBA", message: "Can't wait to go on vacation next week 🌴🌊 I go on the 25th! NBA bubble - Lebron James.", profileImageName: "nba", title: "", userName: "@nba", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "09/10/2019", timePosted: "6:22am", reTweetName: "Retweets", likesName: "Likes"),
-        Tweet(name: "Google", message: "We our going to make a new website! it will be just like our best since Google!", profileImageName: "google", title: "", userName: "@google", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "09/11/17", timePosted: "12:03pm", reTweetName: "Retweets", likesName: "Likes"),
-        Tweet(name: "Mark Zuck", message: "facebook is my day job 😆 FaceBook has been a great app and website for years and years on. We we keep doing great things!", profileImageName: "markkk", title: "", userName: "@marky", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "01/1/12", timePosted: "1:13am", reTweetName: "Retweets", likesName: "Likes"),
-        Tweet(name: "Elon Musk", message: "I love this app can you tell?🤣", profileImageName: "elom", title: "", userName: "@elonMusk", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "12/24/17", timePosted: "7:21pm", reTweetName: "Retweets", likesName: "Likes"),
-        Tweet(name: "justin Bieber", message: "will you be my Baby?♥️ come see me on", profileImageName: "jb", title: "", userName: "@justinBieber", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "11/13/22", timePosted: "11:13pm", reTweetName: "Retweets", likesName: "Likes")
+        Tweet(name: "Karon Bell", message: "Just learned how to program twitter. Its really are not hard once you have the basics of coding down you start to understand how these programs are made.", profileImageName: "kb", title: "", userName: "@karonbell", comments: "KUOH", numberOfComments: 44, retweet: "KIHUOL", numberOfRetweets: 63, likes: "IKUHU", numberOfLikes: 73, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "05/12/23", timePosted: "1:44pm", reTweetName: "Retweets", likesName: "Likes", commentsLabel: "message", reTweetImagee: "repeat", likeImagee: "suit.heart", shareImagee: "tray.and.arrow.down.fill"),
+        Tweet(name: "NBA", message: "Can't wait to go on vacation next week 🌴🌊 I go on the 25th! NBA bubble - Lebron James.", profileImageName: "nba", title: "", userName: "@nba", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "09/10/2019", timePosted: "6:22am", reTweetName: "Retweets", likesName: "Likes", commentsLabel: "message", reTweetImagee: "repeat", likeImagee: "suit.heart", shareImagee: "tray.and.arrow.down.fill"),
+        Tweet(name: "Google", message: "We our going to make a new website! it will be just like our best since Google!", profileImageName: "google", title: "", userName: "@google", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "09/11/17", timePosted: "12:03pm", reTweetName: "Retweets", likesName: "Likes", commentsLabel: "message", reTweetImagee: "repeat", likeImagee: "suit.heart", shareImagee: "tray.and.arrow.down.fill"),
+        Tweet(name: "Mark Zuck", message: "facebook is my day job 😆 FaceBook has been a great app and website for years and years on. We we keep doing great things!", profileImageName: "markkk", title: "", userName: "@marky", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "01/1/12", timePosted: "1:13am", reTweetName: "Retweets", likesName: "Likes", commentsLabel: "message", reTweetImagee: "repeat", likeImagee: "suit.heart", shareImagee: "tray.and.arrow.down.fill"),
+        Tweet(name: "Elon Musk", message: "I love this app can you tell?🤣", profileImageName: "elom", title: "", userName: "@elonMusk", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "12/24/17", timePosted: "7:21pm", reTweetName: "Retweets", likesName: "Likes", commentsLabel: "message", reTweetImagee: "repeat", likeImagee: "suit.heart", shareImagee: "tray.and.arrow.down.fill"),
+        Tweet(name: "justin Bieber", message: "will you be my Baby?♥️ come see me on", profileImageName: "jb", title: "", userName: "@justinBieber", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "11/13/22", timePosted: "11:13pm", reTweetName: "Retweets", likesName: "Likes", commentsLabel: "message", reTweetImagee: "repeat", likeImagee: "suit.heart", shareImagee: "tray.and.arrow.down.fill")
         
     ]
     
@@ -336,6 +349,30 @@ class twitterHomeFeedTableView: UITableViewController {
         
         vc.datee = tweets[indexPath.row].date
         
+        let commentsName = tweets[indexPath.row].commentsLabel
+        let commentsImage = UIImage(systemName: commentsName)
+        
+        let retweetName = tweets[indexPath.row].reTweetImagee
+        
+        let retweetImage = UIImage(systemName: retweetName)
+        
+        let likeName = tweets[indexPath.row].likeImagee
+        
+        let likeImage = UIImage(systemName: likeName)
+        
+        vc.likeImagee = likeImage
+        
+        
+        let shareName = tweets[indexPath.row].shareImagee
+        
+        let shareImage = UIImage(systemName: shareName)
+        
+        vc.shareImagee = shareImage
+        
+        vc.reTweetImagee = retweetImage
+        
+        vc.commentsImagee = commentsImage
+        
         vc.timee = tweets[indexPath.row].timePosted
         
         vc.numberOfRetweets = tweets[indexPath.row].numberOfRetweets
@@ -349,7 +386,9 @@ class twitterHomeFeedTableView: UITableViewController {
         vc.likeImage = tweets[indexPath.row].likes
         
         let imageName = tweets[indexPath.row].profileImageName
+        
         let image = UIImage(named: imageName)
+        
         vc.selectedProfileImage = image
       
       

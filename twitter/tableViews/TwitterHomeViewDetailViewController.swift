@@ -93,13 +93,21 @@ class TwitterHomeViewDetailViewController: UIViewController {
     
     var numberOfReTweetsName: UILabel!
     
+    var commentsImagee: UIImage!
+    
+    
+    var reTweetImagee: UIImage!
+    
+    var likeImagee: UIImage!
+    
+    var shareImagee: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("K")
         
         
-        view.backgroundColor = .cyan
+        view.backgroundColor = .white
         
         // Set the title of the navigation bar
              self.title = "Tweet"
@@ -107,6 +115,73 @@ class TwitterHomeViewDetailViewController: UIViewController {
              // Create a back bar button item
              let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButtonTapped))
              self.navigationItem.leftBarButtonItem = backButton
+        
+        
+        
+
+        if let commentImageToLoad = commentsImagee as UIImage? {
+            let commentImage = UIButton()
+            commentImage.setImage(commentImageToLoad, for: .normal)
+            commentImage.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(commentImage)
+
+            // Add constraints to center the commentImage horizontally and vertically
+            NSLayoutConstraint.activate([
+              
+                commentImage.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -185),
+                commentImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -303),
+                commentImage.widthAnchor.constraint(equalToConstant: 33),
+                commentImage.heightAnchor.constraint(equalToConstant: 63)
+            ])
+        }
+        
+        
+        if let likeToLoad = likeImagee as UIImage? {
+            let likeeImage = UIButton()
+            likeeImage.setImage(likeToLoad, for: .normal)
+            likeeImage.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(likeeImage)
+
+            // Add constraints to center the commentImage horizontally and vertically
+            NSLayoutConstraint.activate([
+              
+                likeeImage.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -185),
+                likeeImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -144),
+               likeeImage.heightAnchor.constraint(equalToConstant: 63)
+            ])
+        }
+        
+        if let shareImageToLoad = shareImagee as UIImage? {
+            let shareImageee = UIButton()
+            shareImageee.setImage(shareImageToLoad, for: .normal)
+            shareImageee.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(shareImageee)
+
+            // Add constraints to center the commentImage horizontally and vertically
+            NSLayoutConstraint.activate([
+              
+               shareImageee.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -185),
+                shareImageee.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -63),
+               shareImageee.heightAnchor.constraint(equalToConstant: 63)
+            ])
+        }
+        
+        if let retweetImageToLoad = reTweetImagee as UIImage? {
+            let retweetImage = UIButton()
+            retweetImage.setImage(retweetImageToLoad, for: .normal)
+            retweetImage.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(retweetImage)
+
+            // Add constraints to center the commentImage horizontally and vertically
+            NSLayoutConstraint.activate([
+              
+               retweetImage.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -185),
+                retweetImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -223),
+               retweetImage.widthAnchor.constraint(equalToConstant: 33),
+                retweetImage.heightAnchor.constraint(equalToConstant: 63)
+            ])
+        }
+        
 
         if let label = selectedLabel as UILabel? {
             label.numberOfLines = 0
@@ -169,52 +244,31 @@ class TwitterHomeViewDetailViewController: UIViewController {
              
          }
          
-            dateLabel = UILabel()
+           
 
             
-            if let dateToLoad = dateLabel as UILabel? {
-                dateToLoad.numberOfLines = 0
-                dateToLoad.lineBreakMode = .byWordWrapping
-                dateToLoad.textAlignment = .center
-                dateToLoad.translatesAutoresizingMaskIntoConstraints = false
-                
-                view.addSubview(dateToLoad)
-                
-                if let DateLabell = datee {
-                    dateToLoad.text = DateLabell
-                    dateToLoad.sizeToFit()
-                }
-                
-                NSLayoutConstraint.activate([
-                
-                    dateToLoad.heightAnchor.constraint(equalToConstant: 100),
-                    dateToLoad.widthAnchor.constraint(equalToConstant: 150),
-                    dateToLoad.bottomAnchor.constraint(equalTo: label.bottomAnchor, constant: 10),
-                    dateToLoad.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -153)
-                ])
-            }
             
-            if let timeLabell = retweetLabel as UILabel? {
-               timeLabell.numberOfLines = 0
-               timeLabell.lineBreakMode = .byWordWrapping
-               timeLabell.textAlignment = .center
-               timeLabell.translatesAutoresizingMaskIntoConstraints = false
+            if let retweetLabell = retweetLabel as UILabel? {
+                retweetLabell.numberOfLines = 0
+                retweetLabell.lineBreakMode = .byWordWrapping
+                retweetLabell.textAlignment = .center
+                retweetLabell.translatesAutoresizingMaskIntoConstraints = false
                 
                 
-                view.addSubview(timeLabell)
+                view.addSubview(retweetLabell)
                 
                 if let timeToPost = timee {
-                    timeLabell.text = timeToPost
+                    retweetLabell.text = timeToPost
     
-                    timeLabell.sizeToFit()
+                    retweetLabell.sizeToFit()
                 }
                 
-                timeLabell.translatesAutoresizingMaskIntoConstraints = false
+                retweetLabell.translatesAutoresizingMaskIntoConstraints = false
                 NSLayoutConstraint.activate([
-                    timeLabell.heightAnchor.constraint(equalToConstant: 400),
-                    timeLabell.widthAnchor.constraint(equalToConstant: 180),
-                    timeLabell.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -115),
-                    timeLabell.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -133)
+                    retweetLabell.heightAnchor.constraint(equalToConstant: 400),
+                    retweetLabell.widthAnchor.constraint(equalToConstant: 180),
+                    retweetLabell.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -115),
+                    retweetLabell.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -133)
                 
                 ])
             }
@@ -253,21 +307,8 @@ class TwitterHomeViewDetailViewController: UIViewController {
                 }
             }
             
-            if let commentImageToLoad = commentsImageLabel as UILabel? {
-                commentImageToLoad.numberOfLines = 0
-                commentImageToLoad.lineBreakMode = .byWordWrapping
-                commentImageToLoad.textAlignment = .center
-                commentImageToLoad.translatesAutoresizingMaskIntoConstraints = false
-                
-                
-                view.addSubview(commentImageToLoad)
-                
-                if let commentImageToLoad = commentsImageLabel {
-                    commentImageToLoad.text = commentsImage
-                    
-                   commentImageToLoad.sizeToFit()
-                }
-            }
+         
+
             
             if let reTweetImageToLoad = reTweetImageLabel as UILabel? {
                reTweetImageToLoad.numberOfLines = 0
@@ -339,7 +380,7 @@ class TwitterHomeViewDetailViewController: UIViewController {
                     dateToLoad.heightAnchor.constraint(equalToConstant: 100),
                     dateToLoad.widthAnchor.constraint(equalToConstant: 150),
                     dateToLoad.bottomAnchor.constraint(equalTo: label.bottomAnchor, constant: 10),
-                    dateToLoad.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -153)
+                    dateToLoad.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -33)
                 ])
             }
             
@@ -477,7 +518,7 @@ class TwitterHomeViewDetailViewController: UIViewController {
             
             
             
-            
+           
             
            
         }
@@ -498,7 +539,7 @@ class TwitterHomeViewDetailViewController: UIViewController {
 
          userNameLabell = UILabel()
             
-        
+      
         
         
             
