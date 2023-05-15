@@ -73,7 +73,7 @@ class TwitterHomePage: UIViewController {
             tabBarController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tabBarController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tabBarController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tabBarController.view.heightAnchor.constraint(equalToConstant: 2),
+            tabBarController.view.heightAnchor.constraint(equalToConstant: 23),
 
             tableViewContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableViewContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor),

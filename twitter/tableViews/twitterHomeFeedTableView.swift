@@ -254,10 +254,19 @@ class MyTableViewCell: UITableViewCell {
 
 class twitterHomeFeedTableView: UITableViewController {
     
-    
+    var isProfileImageViewHidden = false
+    let profileImageView = UIImageView()
     let twitterLogoImageView = UIImageView(image: UIImage(named: "twitterLogo"))
     let addTweetbutton = UIButton(frame: CGRect(x: 150, y: 130, width: 89, height: 64))
     
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+
+            // Toggle profileImageView back on
+            profileImageView.isHidden = isProfileImageViewHidden
+        }
+
+     
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -268,6 +277,15 @@ class twitterHomeFeedTableView: UITableViewController {
         tableView.dataSource = self
         tableView.isUserInteractionEnabled = true
         
+        
+      profileImageViewImage()
+        
+        
+        profileImageView.isUserInteractionEnabled = true
+        
+        let tapGuestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        
+        profileImageView.addGestureRecognizer(tapGuestureRecognizer)
         
         tabBarController?.delegate = self
         
@@ -283,6 +301,51 @@ class twitterHomeFeedTableView: UITableViewController {
         
     }
     
+    func profileImageViewImage() {
+     //    profileImageView.image = UIImage(named: "defaultProfile")
+       profileImageView.image = UIImage(named: "kb")
+
+        profileImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Access the tab bar controller's view instead of the current view
+        guard let tabBarController = self.tabBarController else { return }
+        tabBarController.view.clipsToBounds = false // Allow the image view to be visible outside the bounds of the view
+        profileImageView.layer.masksToBounds = false
+
+        profileImageView.layer.cornerRadius = 23.0
+        profileImageView.clipsToBounds = true
+
+        tabBarController.view.addSubview(profileImageView)
+
+        NSLayoutConstraint.activate([
+            profileImageView.trailingAnchor.constraint(equalTo: tabBarController.view.leadingAnchor, constant: 63),
+            profileImageView.topAnchor.constraint(equalTo: tabBarController.view.topAnchor, constant: 48),
+            profileImageView.widthAnchor.constraint(equalToConstant: 46),
+            profileImageView.heightAnchor.constraint(equalToConstant: 45)
+        ])
+    }
+
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        let tapLocation = sender.location(in: profileImageView)
+        if profileImageView.bounds.contains(tapLocation) {
+            // The tap was inside the profile image view
+            profileImageTapped()
+            print("JYF")
+        }
+    }
+
+    
+    @objc func profileImageTapped() {
+        // Code to handle the profile image being tapped
+          // For example, you can perform a segue to a profile view controller
+          // Or display an action sheet with options related to the profile
+          // Or simply print a message to the console
+        
+        print("Profile image tapped!")
+    }
+   
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tweets.count
@@ -291,11 +354,16 @@ class twitterHomeFeedTableView: UITableViewController {
     
     let tweets: [Tweet] = [
         
-        Tweet(name: "Karon Bell", message: "Just learned how to program twitter. Its really are not hard once you have the basics of coding down you start to understand how these programs are made.", profileImageName: "kb", title: "", userName: "@karonbell", comments: "KUOH", numberOfComments: 44, retweet: "KIHUOL", numberOfRetweets: 63, likes: "IKUHU", numberOfLikes: 73, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "05/12/23", timePosted: "1:44pm", reTweetName: "Retweets", likesName: "Likes", commentsLabel: "message", reTweetImagee: "repeat", likeImagee: "suit.heart", shareImagee: "tray.and.arrow.down.fill"),
+        Tweet(name: "Karon Bell", message: "Just learned how to program twitter. Im the person who just created this Twiiter clone. Its really not hard to code once you have the basics of coding down you just start to understand how these programs are made.", profileImageName: "kb", title: "", userName: "@karonbell", comments: "KUOH", numberOfComments: 44, retweet: "KIHUOL", numberOfRetweets: 63, likes: "IKUHU", numberOfLikes: 93, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "05/12/23", timePosted: "1:44pm", reTweetName: "Retweets", likesName: "Likes", commentsLabel: "message", reTweetImagee: "repeat", likeImagee: "suit.heart", shareImagee: "tray.and.arrow.down.fill"),
+        
         Tweet(name: "NBA", message: "Can't wait to go on vacation next week 🌴🌊 I go on the 25th! NBA bubble - Lebron James.", profileImageName: "nba", title: "", userName: "@nba", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "09/10/2019", timePosted: "6:22am", reTweetName: "Retweets", likesName: "Likes", commentsLabel: "message", reTweetImagee: "repeat", likeImagee: "suit.heart", shareImagee: "tray.and.arrow.down.fill"),
+        
         Tweet(name: "Google", message: "We our going to make a new website! it will be just like our best since Google!", profileImageName: "google", title: "", userName: "@google", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "09/11/17", timePosted: "12:03pm", reTweetName: "Retweets", likesName: "Likes", commentsLabel: "message", reTweetImagee: "repeat", likeImagee: "suit.heart", shareImagee: "tray.and.arrow.down.fill"),
+        
         Tweet(name: "Mark Zuck", message: "facebook is my day job 😆 FaceBook has been a great app and website for years and years on. We we keep doing great things!", profileImageName: "markkk", title: "", userName: "@marky", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "01/1/12", timePosted: "1:13am", reTweetName: "Retweets", likesName: "Likes", commentsLabel: "message", reTweetImagee: "repeat", likeImagee: "suit.heart", shareImagee: "tray.and.arrow.down.fill"),
+        
         Tweet(name: "Elon Musk", message: "I love this app can you tell?🤣", profileImageName: "elom", title: "", userName: "@elonMusk", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "12/24/17", timePosted: "7:21pm", reTweetName: "Retweets", likesName: "Likes", commentsLabel: "message", reTweetImagee: "repeat", likeImagee: "suit.heart", shareImagee: "tray.and.arrow.down.fill"),
+        
         Tweet(name: "justin Bieber", message: "will you be my Baby?♥️ come see me on", profileImageName: "jb", title: "", userName: "@justinBieber", comments: "KUOH", numberOfComments: 21, retweet: "KIHUOL", numberOfRetweets: 23, likes: "IKUHU", numberOfLikes: 23, views: "KUHO", numberOfViews: 54, share: "IHLPHI", date: "11/13/22", timePosted: "11:13pm", reTweetName: "Retweets", likesName: "Likes", commentsLabel: "message", reTweetImagee: "repeat", likeImagee: "suit.heart", shareImagee: "tray.and.arrow.down.fill")
         
     ]
@@ -324,13 +392,18 @@ class twitterHomeFeedTableView: UITableViewController {
         print("Function: tableView(_:didSelectRowAt:)")
         let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
           
+     
               guard let vc = storyBoard.instantiateViewController(withIdentifier: "detail") as? TwitterHomeViewDetailViewController else {
               print("failed to instantiate detail view controller")
                   
               return
               }
         
-        
+       
+        profileImageView.isHidden = true
+      
+       
+      
         
         /*
          guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "detail") as? TwitterHomeViewDetailViewController else {
