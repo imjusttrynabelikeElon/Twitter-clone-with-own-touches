@@ -252,7 +252,7 @@ class MyTableViewCell: UITableViewCell {
 
 
 
-class twitterHomeFeedTableView: UITableViewController {
+class twitterHomeFeedTableView: UITableViewController, UIViewControllerTransitioningDelegate {
     
     var isProfileImageViewHidden = false
     let profileImageView = UIImageView()
@@ -301,6 +301,12 @@ class twitterHomeFeedTableView: UITableViewController {
         
     }
     
+   
+    
+    
+    
+    
+    
     func profileImageViewImage() {
      //    profileImageView.image = UIImage(named: "defaultProfile")
        profileImageView.image = UIImage(named: "kb")
@@ -337,15 +343,17 @@ class twitterHomeFeedTableView: UITableViewController {
 
     
     @objc func profileImageTapped() {
-        // Code to handle the profile image being tapped
-          // For example, you can perform a segue to a profile view controller
-          // Or display an action sheet with options related to the profile
-          // Or simply print a message to the console
+        let sideViewController = TwitterProfileSideViewController()
         
-        print("Profile image tapped!")
+        let presentationDelegate = TwitterProfilePresentationDelegate()
+        sideViewController.transitioningDelegate = presentationDelegate
+        sideViewController.modalPresentationStyle = .custom
+
+        present(sideViewController, animated: true, completion: nil)
     }
-   
-    
+
+
+
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tweets.count
@@ -515,5 +523,16 @@ extension twitterHomeFeedTableView: UITabBarControllerDelegate {
             print("JGHV")
         }
         
+    }
+}
+
+
+extension twitterHomeFeedTableView {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return CustomPresentationAnimator(isPresenting: true)
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return CustomPresentationAnimator(isPresenting: false)
     }
 }
