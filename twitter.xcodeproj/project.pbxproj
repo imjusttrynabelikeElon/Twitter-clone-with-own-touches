@@ -17,6 +17,7 @@
 		C92812C32A12BB4000694E5C /* CustomPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92812C22A12BB4000694E5C /* CustomPresentationController.swift */; };
 		C932A88B2A0CFCA400C5E132 /* twitterTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C932A88A2A0CFCA400C5E132 /* twitterTabBar.swift */; };
 		C93C32792A03673F005C0B9D /* twitterHomeFeedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93C32782A03673F005C0B9D /* twitterHomeFeedTableView.swift */; };
+		C94B816A2A14528200BE14C7 /* twitterBlue.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C94B81692A14528200BE14C7 /* twitterBlue.jpeg */; };
 		C94B85E02A05761A00DB0476 /* kb.png in Resources */ = {isa = PBXBuildFile; fileRef = C94B85DF2A05761A00DB0476 /* kb.png */; };
 		C94B85E22A05791400DB0476 /* nba.png in Resources */ = {isa = PBXBuildFile; fileRef = C94B85E12A05791400DB0476 /* nba.png */; };
 		C94B85E62A05798800DB0476 /* google.png in Resources */ = {isa = PBXBuildFile; fileRef = C94B85E52A05798700DB0476 /* google.png */; };
@@ -54,6 +55,7 @@
 		C92812C22A12BB4000694E5C /* CustomPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresentationController.swift; sourceTree = "<group>"; };
 		C932A88A2A0CFCA400C5E132 /* twitterTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = twitterTabBar.swift; sourceTree = "<group>"; };
 		C93C32782A03673F005C0B9D /* twitterHomeFeedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = twitterHomeFeedTableView.swift; sourceTree = "<group>"; };
+		C94B81692A14528200BE14C7 /* twitterBlue.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = twitterBlue.jpeg; sourceTree = "<group>"; };
 		C94B85DF2A05761A00DB0476 /* kb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kb.png; sourceTree = "<group>"; };
 		C94B85E12A05791400DB0476 /* nba.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nba.png; sourceTree = "<group>"; };
 		C94B85E52A05798700DB0476 /* google.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = google.png; path = ../../../google.png; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				C992F7D029FF2C74004C1BB4 /* twitterLogo.png */,
 				C992F7CA29FF28A2004C1BB4 /* Info.plist */,
 				C94B85E72A05917B00DB0476 /* E.webp */,
+				C94B81692A14528200BE14C7 /* twitterBlue.jpeg */,
 				C951BB662A11C3F5002FA7A8 /* defaultProfile.png */,
 				C992F7D429FF8BA0004C1BB4 /* appleLogo.png */,
 				C992F7D229FF8B9C004C1BB4 /* googleLogo.png */,
@@ -251,6 +254,7 @@
 				C992F7D129FF2C74004C1BB4 /* twitterLogo.png in Resources */,
 				C992F7C129FF28A1004C1BB4 /* Main.storyboard in Resources */,
 				C94B85E22A05791400DB0476 /* nba.png in Resources */,
+				C94B816A2A14528200BE14C7 /* twitterBlue.jpeg in Resources */,
 				C94B85E62A05798800DB0476 /* google.png in Resources */,
 				C94B85E02A05761A00DB0476 /* kb.png in Resources */,
 				C900FE7C2A01F59200A2AB10 /* addTweet.png in Resources */,
