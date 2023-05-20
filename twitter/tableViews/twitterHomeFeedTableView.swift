@@ -491,7 +491,7 @@ class twitterHomeFeedTableView: UITableViewController, UIViewControllerTransitio
         
         vc.selectedProfileImage = image
       
-      
+     //
         vc.selectedTweet = tweets[indexPath.row].message
         print("selectedTweet set")
         print(vc.selectedTweet!)
