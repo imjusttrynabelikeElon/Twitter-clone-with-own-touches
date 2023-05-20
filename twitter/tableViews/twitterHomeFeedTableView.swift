@@ -255,20 +255,15 @@ class MyTableViewCell: UITableViewCell {
 class twitterHomeFeedTableView: UITableViewController, UIViewControllerTransitioningDelegate {
     
     var isProfileImageViewHidden = false
-    let profileImageView = UIImageView()
+    var profileImageView = UIImageView(image: UIImage(named: "kb"))
     let twitterLogoImageView = UIImageView(image: UIImage(named: "twitterLogo"))
-    let addTweetbutton = UIButton(frame: CGRect(x: 150, y: 130, width: 89, height: 64))
+   var addTweetbutton = UIButton(frame: CGRect(x: 150, y: 130, width: 89, height: 64))
     
-    override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-
-            // Toggle profileImageView back on
-            profileImageView.isHidden = isProfileImageViewHidden
-        }
-
+  
      
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         
        // performSegue(withIdentifier: "tweetCell", sender: self)
@@ -301,19 +296,24 @@ class twitterHomeFeedTableView: UITableViewController, UIViewControllerTransitio
         
     }
     
+
+         
+         
+        
    
-    
+    // next add the profile view over the twitterHomeFeed when the user taps profile
     
     
     
     
     func profileImageViewImage() {
-     //    profileImageView.image = UIImage(named: "defaultProfile")
-       profileImageView.image = UIImage(named: "kb")
-
+        
+       
+        
+        // profileImageView.image = UIImage(named: "defaultProfile")
+       
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         
-        // Access the tab bar controller's view instead of the current view
         guard let tabBarController = self.tabBarController else { return }
         tabBarController.view.clipsToBounds = false // Allow the image view to be visible outside the bounds of the view
         profileImageView.layer.masksToBounds = false
@@ -321,15 +321,32 @@ class twitterHomeFeedTableView: UITableViewController, UIViewControllerTransitio
         profileImageView.layer.cornerRadius = 23.0
         profileImageView.clipsToBounds = true
 
-        tabBarController.view.addSubview(profileImageView)
-
+        if presentingViewController is TwitterProfileView {
+            // If the presenting view controller is TwitterProfileView, hide the profile image view
+            print("JGYVKVUIV")
+       //     profileImageView.removeFromSuperview()
+        
+        } else {
+            // For other view controllers, add the profile image view
+         tabBarController.view.addSubview(profileImageView)
+        }
+      
         NSLayoutConstraint.activate([
             profileImageView.trailingAnchor.constraint(equalTo: tabBarController.view.leadingAnchor, constant: 63),
             profileImageView.topAnchor.constraint(equalTo: tabBarController.view.topAnchor, constant: 48),
             profileImageView.widthAnchor.constraint(equalToConstant: 46),
             profileImageView.heightAnchor.constraint(equalToConstant: 45)
         ])
+        
+        if presentingViewController is twitterHomeFeedTableView {
+             // If the presenting view controller is `twitterHomeFeedTableView`, hide the profile image view
+           //  profileImageView.isHidden = true
+         } else {
+             // For other cases, show the profile image view
+             tabBarController.view.addSubview(profileImageView)
+         }
     }
+
 
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
@@ -350,6 +367,8 @@ class twitterHomeFeedTableView: UITableViewController, UIViewControllerTransitio
         sideViewController.modalPresentationStyle = .custom
 
         present(sideViewController, animated: true, completion: nil)
+        
+        
     }
 
 
@@ -486,12 +505,16 @@ class twitterHomeFeedTableView: UITableViewController, UIViewControllerTransitio
             navVC.navigationBar.backItem?.backBarButtonItem = backButtonItem
 
             navVC.pushViewController(vc, animated: true)
+            
+        
+           
+       
         } else {
             let navVC = UINavigationController(rootViewController: vc)
             navVC.modalPresentationStyle = .fullScreen
             vc.tabBarItem.image = UIImage(systemName: "house")
             navVC.modalTransitionStyle = .partialCurl
-
+         
             present(navVC, animated: true, completion: nil)
         }
 
@@ -516,6 +539,8 @@ class twitterHomeFeedTableView: UITableViewController, UIViewControllerTransitio
 extension twitterHomeFeedTableView: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         // Check if the selected view controller belongs to the "For you" tab
+        
+        
         if let currentViewController = self.tabBarController?.selectedViewController,
            currentViewController.tabBarItem.title == "Following" {
             // Reload the table view data if the current view controller is the "For you" tab

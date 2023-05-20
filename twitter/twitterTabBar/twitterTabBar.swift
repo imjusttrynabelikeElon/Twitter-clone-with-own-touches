@@ -10,7 +10,7 @@ import UIKit
 
 class TwitterTabBarContainer: UIViewController {
     
-    private let tabBar = TwitterTabBar()
+    private let tabBar = TwitterTabBarr()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +30,16 @@ class TwitterTabBarContainer: UIViewController {
 
 
 
-class TwitterTabBar: UITabBarController {
+class TwitterTabBarr: UITabBarController, UITabBarControllerDelegate {
+    
+    
+    var homeVC = TwitterHomePage()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let homeVC = TwitterHomePage()
+      
         let searchVC = TwitterSearchView()
         let notificationsVC = TwitterNotificationView()
         let messagesVC =  DirectMessagesView()
@@ -51,7 +55,21 @@ class TwitterTabBar: UITabBarController {
         
         let tabBarList = [homeVC, searchVC, notificationsVC, messagesVC, spacesVC, createAccountPage]
         viewControllers = tabBarList.map { UINavigationController(rootViewController: $0) }
+        
+        delegate = self
+    
     }
 
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if let index = tabBarController.viewControllers?.firstIndex(of: viewController) {
+            if index == 0 {
+                // The home tabBar button was tapped
+                // Remove the container from its superview
+                if let twitterProfileView = presentingViewController as? TwitterProfileView {
+                    twitterProfileView.container.removeFromSuperview()
+                }
+            }
+        }
+    }
 }
 //

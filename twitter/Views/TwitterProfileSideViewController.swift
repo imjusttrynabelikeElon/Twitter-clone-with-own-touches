@@ -19,6 +19,7 @@ struct sideProfileData {
 
 class TwitterProfileSideViewController: UIViewController {
     
+   
     let twitterHomeFeed = twitterHomeFeedTableView()
     let secProfileImageForSideView = UIImageView()
     let secprofileImageForSideViewName = UILabel()
@@ -39,19 +40,51 @@ class TwitterProfileSideViewController: UIViewController {
     let listsName = UILabel()
     let twitterCircle =  UIImageView()
     let twitterCircleName = UILabel()
+    var tapGuestureRecognizer: UITapGestureRecognizer!
+  
+// this is the amount of times
+
+   
+  
+
     
     let userData = sideProfileData(name: "Karon Bell", userName: "@karonbell", followingNumber: "21",followingName: "Following", followerNumber: "233,000", followerName: "Followers")
     
-    
+    @objc func profileImageTapped(_ sender: UITapGestureRecognizer) {
+        let tapLocation = sender.location(in: secProfileImageForSideView)
+        
+        if secProfileImageForSideView.bounds.contains(tapLocation) {
+            let twitterProfileView = TwitterProfileView()
+            let nav = UINavigationController(rootViewController: twitterProfileView)
+            nav.modalPresentationStyle = .overFullScreen
+            
+        
+            present(nav, animated: true)
+            print("Tapped profile image")
+        }
+    }
+
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
+      
+      
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profileImageTapped(_:)))
+             
+             secProfileImageForSideView.image = UIImage(systemName: "person.fill")
+             secProfileImageForSideView.translatesAutoresizingMaskIntoConstraints = false
+             secProfileImageForSideView.tintColor = .systemBlue
+             secProfileImageForSideView.isUserInteractionEnabled = true
+        secProfileImageForSideView.addGestureRecognizer(tapGestureRecognizer)
+             view.addSubview(secProfileImageForSideView)
         
-        secProfileImageForSideView.image = UIImage(systemName: "person.fill")
-        secProfileImageForSideView.translatesAutoresizingMaskIntoConstraints = false
-        secProfileImageForSideView.tintColor = .systemBlue
-        view.addSubview(secProfileImageForSideView)
+     
+     
         
+        
+        // Embed the current view controller in a navigation controller
+              let localNavigationController = UINavigationController(rootViewController: self)
         
         NSLayoutConstraint.activate([
             secProfileImageForSideView.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: 160),
@@ -285,24 +318,35 @@ class TwitterProfileSideViewController: UIViewController {
         NSLayoutConstraint.activate([
             twitterCircleName.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: 273),
             twitterCircleName.topAnchor.constraint(equalTo: view.topAnchor, constant: 758)
-            
             ])
+        
         // Customize the view and add necessary UI elements
-    
+
+        
         // Customize the view and add necessary UI elements
+        
+        
         
         // Example: Create a background color
         view.backgroundColor = UIColor.white
         
-     
+
+      
         
         
         
-   
+        
+        
+        
     }
     
+    
+   
+  
     // Rest of the class implementation
 }
+
+
 
 class TwitterProfilePresentationDelegate: NSObject, UIAdaptivePresentationControllerDelegate, UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {

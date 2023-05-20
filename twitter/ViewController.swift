@@ -14,33 +14,47 @@ class TwitterHomePage: UIViewController {
 
     let tableViewContainer = UIView()
     
+    let homeViewController = UIViewController()
+    
+    let followingViewController = UIViewController()
+    
+    let homeFeedVC = twitterHomeFeedTableView()
+    
+    let twitterHomeFeedViewController = twitterHomeFeedTableView(style: .plain)
+    
+    let forYouTabBarItem = CustomTabBarItem(
+        title: "For you",
+        image: UIImage(named: "forYouImage"),
+        selectedImage: UIImage(named: "forYouImageSelected")
+    )
+    let followingTabBarItem = CustomTabBarItem(
+        title: "Following",
+        image: UIImage(named: "followingImage"),
+        selectedImage: UIImage(named: "followingImageSelected")
+    )
+
+    let twitterLogoImageView = UIImageView(image: UIImage(named: "twitterLogo"))
+    
+    
+    let addTweetButton = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .white
 
-     
-
+       
         
+
         let tabBarController = CustomTabBarController()
         tabBarController.delegate = self
 
-        let forYouTabBarItem = CustomTabBarItem(
-            title: "For you",
-            image: UIImage(named: "forYouImage"),
-            selectedImage: UIImage(named: "forYouImageSelected")
-        )
-        let followingTabBarItem = CustomTabBarItem(
-            title: "Following",
-            image: UIImage(named: "followingImage"),
-            selectedImage: UIImage(named: "followingImageSelected")
-        )
-
+      
         
-        let homeViewController = UIViewController()
+    
         homeViewController.tabBarItem = forYouTabBarItem
 
-        let followingViewController = UIViewController()
+     
         followingViewController.tabBarItem = followingTabBarItem
 
         tabBarController.viewControllers = [homeViewController, followingViewController]
@@ -57,7 +71,7 @@ class TwitterHomePage: UIViewController {
         tableViewContainer.isUserInteractionEnabled = true
         view.addSubview(tableViewContainer)
 
-        let twitterHomeFeedViewController = twitterHomeFeedTableView(style: .plain)
+     
         addChild(twitterHomeFeedViewController)
         twitterHomeFeedViewController.view.translatesAutoresizingMaskIntoConstraints = false
         tableViewContainer.addSubview(twitterHomeFeedViewController.view)
@@ -80,7 +94,7 @@ class TwitterHomePage: UIViewController {
             tableViewContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableViewContainer.topAnchor.constraint(equalTo: tabBarController.view.bottomAnchor, constant: 10)
         ])
-        let twitterLogoImageView = UIImageView(image: UIImage(named: "twitterLogo"))
+       
         twitterLogoImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(twitterLogoImageView)
 
@@ -91,7 +105,7 @@ class TwitterHomePage: UIViewController {
             twitterLogoImageView.heightAnchor.constraint(equalToConstant: 34)
         ])
 
-        let addTweetButton = UIButton()
+       
         addTweetButton.setImage(UIImage(named: "addTweet"), for: .normal)
         addTweetButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(addTweetButton)
